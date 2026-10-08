@@ -1,0 +1,34 @@
+:root {
+    --bg: #efefef;
+    --card: #ffffff;
+    --text: #000000;
+    --muted: #969696;
+  
+    --red: #ea252e;
+    --orange: #ff6841;
+    --yellow: #ffcf61;
+  
+    --accent: linear-gradient(
+      155deg,
+      var(--red),
+      var(--orange) 58%,
+      var(--yellow)
+    );
+  
+    --radius: 40px;
+    --pill: 999px;
+  
+    --display: "TT Travels Medium", Arial, sans-serif;
+    --display-bold: "TT Travels DemiBold", Arial, sans-serif;
+  
+    --body:
+      "SF Pro Display",
+      "SF Pro Text",
+      -apple-system,
+      BlinkMacSystemFont,
+      "Helvetica Neue",
+      Arial,
+      sans-serif;
+  
+    --page: 50px;
+  }
