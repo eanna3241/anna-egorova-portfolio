@@ -85,10 +85,7 @@ const projectNdaSlides: Record<string, number[]> = {
   decades: [],
 };
 
-function createGalleryImages(
-  slug: string,
-  count: number
-) {
+function createGalleryImages(slug: string, count: number) {
   return Array.from({ length: count }, (_, index) => {
     const number = String(index + 1).padStart(2, "0");
 
@@ -159,7 +156,23 @@ export function CasePage({
       />
 
       <article className={caseClassName}>
-        {hasHeroGallery ? (
+        {isSetka ? (
+          <div className="case-showreel">
+            <video
+              src="/assets/videos/setka-showreel.mp4"
+              poster="/assets/images/projects/setka/hero-setka.png"
+              autoPlay
+              muted
+              loop
+              playsInline
+              controls
+              preload="metadata"
+              aria-label="Setka project showreel"
+            >
+              Your browser does not support video playback.
+            </video>
+          </div>
+        ) : hasHeroGallery ? (
           <PresentationGallery
             title={project.shortTitle}
             images={galleryImages}
