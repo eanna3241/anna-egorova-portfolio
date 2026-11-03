@@ -1,8 +1,10 @@
 import type { Project } from "@/types/project";
+
 import { projects } from "@/data/projects";
 import { CloseButton } from "@/components/shared/CloseButton";
 
 import { CaseNavigation } from "./CaseNavigation";
+import { CaseProgress } from "./CaseProgress";
 import { CaseSection } from "./CaseSection";
 import { CaseSummary } from "./CaseSummary";
 import { NextProjectButton } from "./NextProjectButton";
@@ -17,18 +19,23 @@ const mobileScreenCounts: Record<string, number> = {
   plata: 18,
 };
 
-/*
+/**
  * У Plata отсутствует screen-09.png,
  * поэтому исключаем его из списка.
  */
-
-const missingMobileScreens: Record<string, number[]> = {
+const missingMobileScreens: Record<
+  string,
+  number[]
+> = {
   plata: [9],
 };
 
 /* PRESENTATION AND GRAPHIC GALLERIES */
 
-const projectGalleryCounts: Record<string, number> = {
+const projectGalleryCounts: Record<
+  string,
+  number
+> = {
   "report-presentations": 6,
   "talk-presentations": 6,
   "case-presentations": 16,
@@ -45,7 +52,10 @@ const projectGalleryCounts: Record<string, number> = {
 
 /* NDA SLIDES */
 
-const projectNdaSlides: Record<string, number[]> = {
+const projectNdaSlides: Record<
+  string,
+  number[]
+> = {
   "report-presentations": [1, 2, 3, 4, 5, 6],
   "talk-presentations": [2, 4, 6],
 };
@@ -75,7 +85,9 @@ function createNumberedImages(
     { length: count },
     (_, index) => index + 1
   )
-    .filter((number) => !missing.includes(number))
+    .filter(
+      (number) => !missing.includes(number)
+    )
     .map((number) => {
       const fileNumber = String(number).padStart(
         2,
@@ -95,27 +107,27 @@ export function CasePage({
 }) {
   const isSetka = project.slug === "setka";
   const isDecades = project.slug === "decades";
-  const isAntispam = project.slug === "antispam";
+  const isAntispam =
+    project.slug === "antispam";
 
   const isMobileProject =
     project.category === "mobile";
 
-  /*
+  /**
    * В немобильных кейсах About уже находится
    * в верхнем блоке Intro, поэтому ниже
    * повторно его не показываем.
    */
-
   const nonMobileSections =
-  project.sections.filter((section) => {
-    const sectionTitle =
-      section.title.toLowerCase();
+    project.sections.filter((section) => {
+      const sectionTitle =
+        section.title.toLowerCase();
 
-    return (
-      sectionTitle !== "about" &&
-      sectionTitle !== "concept"
-    );
-  });
+      return (
+        sectionTitle !== "about" &&
+        sectionTitle !== "concept"
+      );
+    });
 
   /* MOBILE SCREENS */
 
@@ -208,6 +220,8 @@ export function CasePage({
 
   return (
     <main className="project-page">
+      <CaseProgress />
+
       <CloseButton
         href={`/?category=${project.category}`}
       />
@@ -343,9 +357,7 @@ export function CasePage({
             <header className="case-block-heading">
               <p>Final work</p>
 
-              <h2>
-                Key product screens
-              </h2>
+              <h2>Key product screens</h2>
             </header>
 
             <div
