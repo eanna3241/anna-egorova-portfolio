@@ -1,59 +1,32 @@
-import Link from "next/link";
-
 import type { Project } from "@/types/project";
 import { projects } from "@/data/projects";
 import { CloseButton } from "@/components/shared/CloseButton";
 
+import { CaseNavigation } from "./CaseNavigation";
 import { CaseSection } from "./CaseSection";
+import { CaseSummary } from "./CaseSummary";
+import { NextProjectButton } from "./NextProjectButton";
 import { PresentationGallery } from "./PresentationGallery";
 import { ScrollableLanding } from "./ScrollableLanding";
 
-const setkaScreens = [
-  "/assets/images/projects/setka/screen-01.png",
-  "/assets/images/projects/setka/screen-02.png",
-  "/assets/images/projects/setka/screen-03.png",
-  "/assets/images/projects/setka/screen-04.png",
-  "/assets/images/projects/setka/screen-05.png",
-  "/assets/images/projects/setka/screen-06.png",
-  "/assets/images/projects/setka/screen-07.png",
-  "/assets/images/projects/setka/screen-08.png",
-];
+/* MOBILE PRODUCT SCREENS */
 
-const capsuleScreens = [
-  "/assets/images/projects/capsule/screen-01.png",
-  "/assets/images/projects/capsule/screen-02.png",
-  "/assets/images/projects/capsule/screen-03.png",
-  "/assets/images/projects/capsule/screen-04.png",
-  "/assets/images/projects/capsule/screen-05.png",
-  "/assets/images/projects/capsule/screen-06.png",
-  "/assets/images/projects/capsule/screen-07.png",
-  "/assets/images/projects/capsule/screen-08.png",
-  "/assets/images/projects/capsule/screen-09.png",
-  "/assets/images/projects/capsule/screen-10.png",
-  "/assets/images/projects/capsule/screen-11.png",
-  "/assets/images/projects/capsule/screen-12.png",
-  "/assets/images/projects/capsule/screen-13.png",
-];
+const mobileScreenCounts: Record<string, number> = {
+  setka: 8,
+  capsule: 13,
+  plata: 18,
+};
 
-const plataScreens = [
-  "/assets/images/projects/plata/screen-01.png",
-  "/assets/images/projects/plata/screen-02.png",
-  "/assets/images/projects/plata/screen-03.png",
-  "/assets/images/projects/plata/screen-04.png",
-  "/assets/images/projects/plata/screen-05.png",
-  "/assets/images/projects/plata/screen-06.png",
-  "/assets/images/projects/plata/screen-07.png",
-  "/assets/images/projects/plata/screen-08.png",
-  "/assets/images/projects/plata/screen-10.png",
-  "/assets/images/projects/plata/screen-11.png",
-  "/assets/images/projects/plata/screen-12.png",
-  "/assets/images/projects/plata/screen-13.png",
-  "/assets/images/projects/plata/screen-14.png",
-  "/assets/images/projects/plata/screen-15.png",
-  "/assets/images/projects/plata/screen-16.png",
-  "/assets/images/projects/plata/screen-17.png",
-  "/assets/images/projects/plata/screen-18.png",
-];
+/*
+ * У Plata отсутствует screen-09.png,
+ * поэтому исключаем его из списка.
+ */
+
+const missingMobileScreens: Record<string, number[]> = {
+  plata: [9],
+};
+
+/* PRESENTATION AND GRAPHIC GALLERIES */
 
 const projectGalleryCounts: Record<string, number> = {
   "report-presentations": 6,
@@ -70,28 +43,50 @@ const projectGalleryCounts: Record<string, number> = {
   decades: 4,
 };
 
+/* NDA SLIDES */
+
 const projectNdaSlides: Record<string, number[]> = {
   "report-presentations": [1, 2, 3, 4, 5, 6],
   "talk-presentations": [2, 4, 6],
-  "case-presentations": [],
-
-  vk: [],
-  "avito-open-event": [],
-  biocad: [],
-  "rzd-medicine": [],
-  "alfa-bank": [],
-  "samolet-partners-day": [],
-
-  decades: [],
 };
 
-function createGalleryImages(slug: string, count: number) {
-  return Array.from({ length: count }, (_, index) => {
-    const number = String(index + 1).padStart(2, "0");
+/* NAVIGATION TITLES */
 
-    return `/assets/images/projects/${slug}/slide-${number}.png`;
-  });
+const categoryNavigationTitles: Record<
+  Project["category"],
+  string
+> = {
+  mobile: "Mobile",
+  web: "Web",
+  presentation: "Presentation",
+  graphic: "Graphic",
+  concept: "Concept",
+};
+
+/* IMAGE LIST GENERATOR */
+
+function createNumberedImages(
+  slug: string,
+  prefix: "screen" | "slide",
+  count: number,
+  missing: number[] = []
+) {
+  return Array.from(
+    { length: count },
+    (_, index) => index + 1
+  )
+    .filter((number) => !missing.includes(number))
+    .map((number) => {
+      const fileNumber = String(number).padStart(
+        2,
+        "0"
+      );
+
+      return `/assets/images/projects/${slug}/${prefix}-${fileNumber}.png`;
+    });
 }
+
+/* CASE PAGE */
 
 export function CasePage({
   project,
@@ -99,39 +94,60 @@ export function CasePage({
   project: Project;
 }) {
   const isSetka = project.slug === "setka";
-  const isCapsule = project.slug === "capsule";
-  const isPlata = project.slug === "plata";
   const isDecades = project.slug === "decades";
   const isAntispam = project.slug === "antispam";
 
-  const mobileScreens = isSetka
-    ? setkaScreens
-    : isCapsule
-      ? capsuleScreens
-      : isPlata
-        ? plataScreens
-        : [];
+  const isMobileProject =
+    project.category === "mobile";
 
-  const gallerySlidesCount =
-    projectGalleryCounts[project.slug] ?? 0;
+  /*
+   * В немобильных кейсах About уже находится
+   * в верхнем блоке Intro, поэтому ниже
+   * повторно его не показываем.
+   */
 
-  const galleryImages = createGalleryImages(
+  const nonMobileSections =
+  project.sections.filter((section) => {
+    const sectionTitle =
+      section.title.toLowerCase();
+
+    return (
+      sectionTitle !== "about" &&
+      sectionTitle !== "concept"
+    );
+  });
+
+  /* MOBILE SCREENS */
+
+  const mobileScreens = createNumberedImages(
     project.slug,
-    gallerySlidesCount
+    "screen",
+    mobileScreenCounts[project.slug] ?? 0,
+    missingMobileScreens[project.slug] ?? []
+  );
+
+  /* PRESENTATION OR GRAPHIC SLIDES */
+
+  const galleryImages = createNumberedImages(
+    project.slug,
+    "slide",
+    projectGalleryCounts[project.slug] ?? 0
   );
 
   const ndaSlides =
     projectNdaSlides[project.slug] ?? [];
 
-  const hasHeroGallery = galleryImages.length > 0;
+  /* NEXT PROJECT */
 
   const categoryProjects = projects.filter(
-    (item) => item.category === project.category
+    (item) =>
+      item.category === project.category
   );
 
-  const currentProjectIndex = categoryProjects.findIndex(
-    (item) => item.slug === project.slug
-  );
+  const currentProjectIndex =
+    categoryProjects.findIndex(
+      (item) => item.slug === project.slug
+    );
 
   const nextProject =
     categoryProjects.length > 1
@@ -141,10 +157,51 @@ export function CasePage({
         ]
       : null;
 
+  /* SIDE NAVIGATION */
+
+  const navigationItems = [
+    {
+      id: "overview",
+      label: "Overview",
+      show: true,
+    },
+    {
+      id: "process",
+      label: "Process",
+      show:
+        isMobileProject &&
+        project.sections.length > 0,
+    },
+    {
+      id: "final-work",
+      label: "Final work",
+      show: mobileScreens.length > 0,
+    },
+    {
+      id: "reflection",
+      label: "Reflection",
+      show: Boolean(project.learning),
+    },
+    {
+      id: "next-project",
+      label: "Next project",
+      show: Boolean(nextProject),
+    },
+  ]
+    .filter((item) => item.show)
+    .map(({ id, label }) => ({
+      id,
+      label,
+    }));
+
+  /* CASE MODIFIERS */
+
   const caseClassName = [
     "case",
     isDecades ? "case--decades" : "",
-    isAntispam ? "case--long-screen" : "",
+    isAntispam
+      ? "case--long-screen"
+      : "",
   ]
     .filter(Boolean)
     .join(" ");
@@ -155,7 +212,18 @@ export function CasePage({
         href={`/?category=${project.category}`}
       />
 
+      <CaseNavigation
+        items={navigationItems}
+        title={
+          categoryNavigationTitles[
+            project.category
+          ]
+        }
+      />
+
       <article className={caseClassName}>
+        {/* HERO MEDIA */}
+
         {isSetka ? (
           <div className="case-showreel">
             <video
@@ -169,10 +237,11 @@ export function CasePage({
               preload="metadata"
               aria-label="Setka project showreel"
             >
-              Your browser does not support video playback.
+              Your browser does not support video
+              playback.
             </video>
           </div>
-        ) : hasHeroGallery ? (
+        ) : galleryImages.length > 0 ? (
           <PresentationGallery
             title={project.shortTitle}
             images={galleryImages}
@@ -187,57 +256,150 @@ export function CasePage({
           <img
             className="case-cover"
             src={project.cover}
-            alt={`${project.shortTitle} case study cover`}
+            alt={`${project.shortTitle} project cover`}
           />
         )}
 
-        <header className="case-intro">
-          <h1>{project.title}</h1>
+        {/* TITLE */}
 
-          <p className="case-description">
-            {project.description}
+        <header className="case-intro">
+          <p className="case-intro-eyebrow">
+            {project.shortTitle}
+            {" · "}
+            {
+              categoryNavigationTitles[
+                project.category
+              ]
+            }
           </p>
+
+          <h1>{project.title}</h1>
         </header>
 
-        {project.sections.map((section, index) => (
-          <div
-            className="case-section-wrapper"
-            key={section.title}
+        {/* OVERVIEW AND INTRO */}
+
+        <div id="overview">
+          <CaseSummary project={project} />
+        </div>
+
+        {/* MOBILE PROCESS */}
+
+        {isMobileProject &&
+        project.sections.length > 0 ? (
+          <section
+            id="process"
+            className="case-process"
           >
-            <CaseSection section={section} />
+            <header className="case-block-heading">
+              <p>Process</p>
 
-            {mobileScreens.length > 0 &&
-              index === 1 && (
+              <h2>
+                How the project developed
+              </h2>
+            </header>
+
+            {project.sections.map(
+              (section) => (
                 <div
-                  className="screens-gallery"
-                  aria-label={`${project.shortTitle} application screens`}
+                  className="case-section-wrapper"
+                  key={section.title}
                 >
-                  {mobileScreens.map(
-                    (screen, screenIndex) => (
-                      <img
-                        key={screen}
-                        src={screen}
-                        alt={`${project.shortTitle} application screen ${
-                          screenIndex + 1
-                        }`}
-                        draggable="false"
-                      />
-                    )
-                  )}
+                  <CaseSection
+                    section={section}
+                  />
                 </div>
-              )}
-          </div>
-        ))}
+              )
+            )}
+          </section>
+        ) : null}
 
-        {nextProject && (
-          <footer className="case-footer">
-            <Link
-              href={`/projects/${nextProject.slug}`}
+        {/* NON-MOBILE DETAILS */}
+
+        {!isMobileProject &&
+        nonMobileSections.length > 0 ? (
+          <div className="case-details">
+            {nonMobileSections.map(
+              (section) => (
+                <div
+                  className="case-section-wrapper"
+                  key={section.title}
+                >
+                  <CaseSection
+                    section={section}
+                  />
+                </div>
+              )
+            )}
+          </div>
+        ) : null}
+
+        {/* FINAL PRODUCT SCREENS */}
+
+        {mobileScreens.length > 0 ? (
+          <section
+            id="final-work"
+            className="case-final-work"
+          >
+            <header className="case-block-heading">
+              <p>Final work</p>
+
+              <h2>
+                Key product screens
+              </h2>
+            </header>
+
+            <div
+              className="screens-gallery"
+              aria-label={`${project.shortTitle} application screens`}
             >
-              Next project
-            </Link>
+              {mobileScreens.map(
+                (screen, index) => (
+                  <img
+                    key={screen}
+                    src={screen}
+                    alt={`${project.shortTitle} application screen ${
+                      index + 1
+                    }`}
+                    draggable="false"
+                    loading="lazy"
+                  />
+                )
+              )}
+            </div>
+          </section>
+        ) : null}
+
+        {/* REFLECTION */}
+
+        {project.learning ? (
+          <section
+            id="reflection"
+            className="case-learning"
+          >
+            <header className="case-block-heading">
+              <p>Reflection</p>
+
+              <h2>What I learned</h2>
+            </header>
+
+            <p className="case-learning-text">
+              {project.learning}
+            </p>
+          </section>
+        ) : null}
+
+        {/* NEXT PROJECT */}
+
+        {nextProject ? (
+          <footer
+            id="next-project"
+            className="case-footer"
+          >
+            <NextProjectButton
+              project={nextProject}
+            />
           </footer>
-        )}
+        ) : null}
       </article>
     </main>
   );

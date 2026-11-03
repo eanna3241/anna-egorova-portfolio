@@ -4,17 +4,24 @@ export const mobileProjects: Project[] = [
   {
     slug: "setka",
     category: "mobile",
+
     shortTitle: "Setka",
+
     title:
-      "Setka — turning cold networking into meaningful professional connections",
+      "Turning cold networking into meaningful professional connections",
+
     description:
-      "Setka is a professional networking platform by hh.ru. For my graduation project, I redesigned the experience of discovering relevant contacts and starting a conversation.",
+      "Setka is a professional networking platform by hh.ru. For my graduation project, I redesigned how users discover relevant contacts, understand why they match and start the first conversation.",
+
     badge:
       "/assets/images/home/logotype_badge_setka.png",
+
     preview:
       "/assets/images/home/hero-setka.png",
+
     cover:
       "/assets/images/projects/setka/hero-setka.png",
+
     tags: [
       "UX Research",
       "JTBD",
@@ -25,61 +32,155 @@ export const mobileProjects: Project[] = [
       "Usability",
       "Motion",
     ],
+
     role:
       "Product Designer — research, UX, UI, prototyping, usability testing and product logic.",
+
+    meta: {
+      role: "Product Designer",
+      status: "Graduation project",
+      year: "2026",
+      type: "Mobile · Career Tech",
+      scope: "Research · UX · UI · Testing",
+      team: "Individual project",
+    },
+
+    overview: {
+      problem:
+        "Career platforms help users discover professionals, but rarely provide enough context to decide whether starting a conversation is worthwhile.",
+
+      solution:
+        "AI Match, transparent match reasons, a cultural profile and first-message suggestions make every recommendation easier to understand and act on.",
+
+      result:
+        "A complete networking journey that helps users move from discovering a contact to starting a more informed and intentional conversation.",
+    },
+
+    impact: [
+      {
+        value: "16",
+        label: "Usability test participants",
+      },
+      {
+        value: "12",
+        label: "Participants completed the full scenario",
+      },
+      {
+        value: "255.58 sec",
+        label: "Average completion time",
+      },
+      {
+        value: "181.92 sec",
+        label: "Median completion time",
+      },
+    ],
+
+    learning:
+      "Better networking does not start with showing users more people. It starts with giving them enough context to make a confident decision.",
+
     sections: [
       {
-        title: "Result",
+        eyebrow: "The challenge",
+
+        title:
+          "The problem wasn’t finding more people — it was understanding why they mattered",
+
         paragraphs: [
-          "I designed a networking experience that helps users understand why a connection matters before reaching out. Instead of another contact search tool, the concept supports a more informed journey: Discover → Understand → Connect.",
+          "Users could already discover potentially relevant professionals. The difficult part was deciding whether a person was worth contacting.",
+
+          "Profiles often looked similar, recommendations lacked explanation and the first message felt like cold outreach to a stranger.",
         ],
       },
+
       {
-        title: "The solution",
+        eyebrow: "Research insight",
+
+        title:
+          "Recommendations without context did not feel trustworthy",
+
         paragraphs: [
-          "The experience combines four key elements:",
-          "Users can see specific points of connection, including professional experience, interests, mutual contacts and communication style.",
+          "I conducted in-depth interviews with job seekers and employers, explored professional networking behaviours and analysed career platforms.",
         ],
+
         bullets: [
-          "AI Match evaluates the relevance of a connection",
-          "Match reasons explain why the person was recommended",
-          "Cultural profile reveals values and communication preferences",
-          "Message suggestions make starting a conversation easier",
+          "People needed more context before making contact",
+          "Unexplained recommendations reduced trust",
+          "Values and communication style influenced the decision",
+          "Writing the first message remained the main barrier",
         ],
       },
+
       {
-        title: "The challenge",
+        eyebrow: "Design decision",
+
+        title:
+          "Making every recommendation easier to understand",
+
         paragraphs: [
-          "Career platforms help people discover professionals but rarely help them decide whether to connect. Profiles often look similar, recommendations lack explanation, and the first message feels like cold outreach to a stranger.",
-        ],
-        quote:
-          "The challenge was not finding more people — it was making each connection feel relevant.",
-      },
-      {
-        title: "Research insights",
-        paragraphs: [
-          "I conducted in-depth interviews with job seekers and employers, explored networking behaviours and analysed career platforms. The research revealed that:",
-        ],
-        bullets: [
-          "People need more context before making contact",
-          "Unexplained recommendations reduce trust",
-          "Values and communication style influence the decision",
-          "Writing the first message remains the main barrier",
+          "Instead of showing users more profiles, I focused on improving the quality of each recommendation.",
+
+          "AI Match evaluates the relevance of a connection while match reasons reveal specific points of overlap, including professional experience, interests, mutual contacts and communication style.",
         ],
       },
+
       {
-        title: "Expected impact",
+        eyebrow: "Communication fit",
+
+        title:
+          "Professional experience was not the only signal that mattered",
+
         paragraphs: [
-          "The concept was designed to improve:",
+          "Research showed that users also wanted to understand what communicating with a person might feel like.",
+
+          "The cultural profile adds context about values, working style and communication preferences before the user decides to connect.",
         ],
+      },
+
+      {
+        eyebrow: "First interaction",
+
+        title:
+          "Helping users overcome the hardest step — writing the first message",
+
+        paragraphs: [
+          "Even after finding a relevant contact, users often did not know how to begin the conversation.",
+
+          "Message suggestions use the known points of connection to provide a natural starting point without replacing the user’s own voice.",
+        ],
+      },
+
+      {
+        eyebrow: "Usability testing",
+
+        title:
+          "Testing the complete journey from recommendation to conversation",
+
+        paragraphs: [
+          "I tested the end-to-end scenario with 16 participants. The task was to find a suitable, non-toxic manager using AI recommendations and start a conversation.",
+
+          "Twelve participants completed the complete scenario. The average completion time was 255.58 seconds and the median was 181.92 seconds.",
+        ],
+      },
+
+      {
+        eyebrow: "Expected product impact",
+
+        title:
+          "Success means meaningful conversations, not profiles viewed",
+
+        paragraphs: [
+          "Because this was a graduation concept rather than a released product, the business effect is presented as expected impact rather than measured results.",
+        ],
+
         bullets: [
           "Conversion to First Message",
           "Reply Rate",
           "Successful Conversation Rate",
           "Retention",
         ],
+
         quote:
-          "Success is not the number of profiles viewed, but the number of meaningful conversations started.",
+          "The goal is not to maximise the number of contacts viewed, but to increase the number of meaningful professional conversations started.",
       },
     ],
   },
@@ -87,17 +188,24 @@ export const mobileProjects: Project[] = [
   {
     slug: "plata",
     category: "mobile",
+
     shortTitle: "Plata",
+
     title:
-      "Plata — making card ordering simple and transparent",
+      "Making card ordering simple and transparent",
+
     description:
       "A fintech product design challenge focused on creating a clear and personal card-ordering experience — from comparison and customisation to checkout and delivery tracking.",
+
     badge:
       "/assets/images/home/logotype_badge_plata.png",
+
     preview:
       "/assets/images/projects/plata/hero-plata.png",
+
     cover:
       "/assets/images/projects/plata/hero-plata.png",
+
     tags: [
       "UX Research",
       "User Flow",
@@ -106,46 +214,111 @@ export const mobileProjects: Project[] = [
       "UI Design",
       "Prototyping",
     ],
+
     role:
       "Product Designer — research, user flow, UX, UI, prototyping and product logic.",
+
+    meta: {
+      role: "Product Designer",
+      status: "Design challenge",
+      type: "Mobile · Fintech",
+      scope: "UX · UI · Prototyping",
+      team: "Individual project",
+    },
+
+    overview: {
+      problem:
+        "Ordering a physical card requires several connected decisions. Unclear differences, pricing or delivery details can create uncertainty and interrupt the process.",
+
+      solution:
+        "A guided flow combines card comparison, live customisation, transparent pricing, checkout and delivery tracking in one continuous journey.",
+
+      result:
+        "An end-to-end card-ordering experience that makes every stage predictable — from choosing a card to receiving and using it.",
+    },
+
+    learning:
+      "A financial flow feels simpler when every decision has a visible consequence and users always understand what will happen next.",
+
     sections: [
       {
-        title: "Result",
+        eyebrow: "The challenge",
+
+        title:
+          "A simple card order contains several connected decisions",
+
         paragraphs: [
-          "I designed an end-to-end card-ordering experience that guides users from choosing and customising a physical card to checkout, delivery tracking and everyday use.",
+          "Before completing an order, users need to compare card options, understand their differences, choose a design, confirm the price and evaluate delivery conditions.",
+
+          "When this information is fragmented, even a relatively short flow can feel uncertain.",
         ],
       },
+
       {
-        title: "The solution",
-        paragraphs: [
-          "The experience makes every stage of ordering clear and predictable.",
-        ],
+        eyebrow: "UX principle",
+
+        title:
+          "Each step should answer the user’s next question",
+
         bullets: [
-          "Consistent attributes make card options easier to compare",
-          "A live preview shows the customised card before ordering",
-          "Pricing and delivery details remain visible before confirmation",
-          "Order status and estimated delivery time are available after payment",
+          "What is the difference between these cards?",
+          "What will my customised card look like?",
+          "How much will I pay?",
+          "When will the card arrive?",
+          "Where can I see the current order status?",
         ],
       },
+
       {
-        title: "The challenge",
+        eyebrow: "Card comparison",
+
+        title:
+          "Consistent attributes made card options easier to compare",
+
         paragraphs: [
-          "Users need to make several connected decisions when ordering a physical card. Unclear differences, pricing or delivery information can create uncertainty and interrupt the process.",
-        ],
-        quote:
-          "The challenge was to turn a complex sequence of decisions into one continuous and predictable experience.",
-      },
-      {
-        title: "Research insights",
-        bullets: [
-          "Users need clear differences between card options",
-          "They want to know exactly how the final card will look",
-          "Uncertainty around price and delivery increases hesitation",
-          "After ordering, users need confirmation and tracking information",
+          "I organised card information around the same set of attributes so users could compare options without repeatedly interpreting different content structures.",
         ],
       },
+
       {
-        title: "Expected impact",
+        eyebrow: "Personalisation",
+
+        title:
+          "A live preview connected customisation with the final result",
+
+        paragraphs: [
+          "The card preview updates during customisation, allowing users to understand what they are ordering before they move to checkout.",
+        ],
+      },
+
+      {
+        eyebrow: "Transparency",
+
+        title:
+          "Price and delivery information stayed visible before confirmation",
+
+        paragraphs: [
+          "Important conditions remain available at the moment of decision instead of appearing only at the final checkout step.",
+        ],
+      },
+
+      {
+        eyebrow: "After checkout",
+
+        title:
+          "The experience continued after the order was placed",
+
+        paragraphs: [
+          "Confirmation, order status and estimated delivery time give users a clear sense of progress after payment.",
+        ],
+      },
+
+      {
+        eyebrow: "Expected product impact",
+
+        title:
+          "Reducing uncertainty can improve completion and trust",
+
         bullets: [
           "Higher conversion to completed card orders",
           "Lower checkout abandonment",
@@ -159,17 +332,24 @@ export const mobileProjects: Project[] = [
   {
     slug: "capsule",
     category: "mobile",
+
     shortTitle: "Capsule",
+
     title:
-      "Capsule — preserving memories through music",
+      "Preserving meaningful memories through music",
+
     description:
-      "A music time-capsule service that helps users preserve meaningful life moments and return to them through music.",
+      "A music time-capsule service that helps users preserve meaningful life moments and return to them through music, emotions and personal artefacts.",
+
     badge:
       "/assets/images/home/logotype_badge_capsule.png",
+
     preview:
       "/assets/images/projects/capsule/hero-capsule.png",
+
     cover:
       "/assets/images/projects/capsule/hero-capsule.png",
+
     tags: [
       "UX Research",
       "User Interviews",
@@ -180,54 +360,116 @@ export const mobileProjects: Project[] = [
       "Design System",
       "Usability",
     ],
+
     role:
-      "Product Designer — research, UX, UI, prototyping, usability testing, and design system development.",
+      "Product Designer — research, UX, UI, prototyping, usability testing and design system development.",
+
+    meta: {
+      role: "Product Designer",
+      status: "Concept project",
+      type: "Mobile · Music",
+      scope: "Research · UX · UI",
+      team: "Individual project",
+    },
+
+    overview: {
+      problem:
+        "Streaming services remember what people listened to, but rarely preserve why a song was meaningful or which life moment it belonged to.",
+
+      solution:
+        "Users combine music with emotions, notes, photos and event context, then select a future date when the capsule can be opened again.",
+
+      result:
+        "A music experience that turns listening history into a personal memory archive users can return to over time.",
+    },
+
+    learning:
+      "The long-term value of a music service can come not only from discovering new content, but also from preserving the personal meaning behind it.",
+
     sections: [
       {
-        title: "Result",
+        eyebrow: "The opportunity",
+
+        title:
+          "Music already works as a personal memory archive",
+
         paragraphs: [
-          "I designed a music experience that turns listening history into a personal memory archive. Instead of simply saving tracks, users can preserve why a song mattered and return to that moment over time.",
+          "Certain tracks can instantly bring back people, places, events and specific periods of life.",
+
+          "People already use playlists to preserve these associations, but the meaning behind a playlist can gradually disappear.",
         ],
       },
+
       {
-        title: "The solution",
+        eyebrow: "Research insight",
+
+        title:
+          "Users remembered the music but often lost its original context",
+
         paragraphs: [
-          "Users create a music capsule by combining tracks with notes, emotions, photos, and the context of a meaningful event.",
-          "Each capsule remains closed until a selected date. When it opens, the user can revisit the memory through music and personal artefacts saved at that moment.",
+          "I conducted in-depth interviews and explored music-listening and playlist-creation behaviours.",
         ],
-      },
-      {
-        title: "The challenge",
-        paragraphs: [
-          "Music is closely connected to people, places, and important periods of life. However, streaming services primarily preserve listening history rather than the emotional context behind it.",
-          "As collections grow, users may remember the song but lose the story of why it was meaningful.",
-        ],
-        quote:
-          "The challenge was not helping users save more music — it was helping them preserve why that music mattered.",
-      },
-      {
-        title: "Research insights",
-        paragraphs: [
-          "I conducted in-depth interviews and explored music-listening and playlist creation behaviours. The research revealed that:",
-        ],
+
         bullets: [
-          "Music is strongly associated with specific life events",
-          "Playlists often act as personal memory archives",
-          "The meaning behind a playlist can disappear over time",
-          "People value opportunities to revisit meaningful moments from the past",
+          "Music was strongly associated with specific life events",
+          "Playlists often acted as personal memory archives",
+          "The context behind a playlist could disappear over time",
+          "People valued opportunities to revisit meaningful moments",
         ],
       },
+
       {
-        title: "Expected impact",
+        eyebrow: "Product concept",
+
+        title:
+          "Turning a playlist into a time capsule",
+
         paragraphs: [
-          "The concept was designed to support:",
+          "Users create a capsule by combining tracks with notes, emotions, photographs and the context of a meaningful event.",
+
+          "This transforms a collection of music into a richer record of a specific moment.",
         ],
+      },
+
+      {
+        eyebrow: "Time mechanic",
+
+        title:
+          "Closing the capsule gives the memory a future moment of return",
+
+        paragraphs: [
+          "The user selects a date when the capsule can be opened again.",
+
+          "When that date arrives, the service brings back the music and personal artefacts saved at the moment of creation.",
+        ],
+      },
+
+      {
+        eyebrow: "Emotional experience",
+
+        title:
+          "The product was designed for reflection, not only consumption",
+
+        paragraphs: [
+          "The interface gives space to the memory itself instead of treating music as an endless stream of content.",
+
+          "Visual hierarchy, colour and motion support a slower and more personal experience.",
+        ],
+      },
+
+      {
+        eyebrow: "Expected product impact",
+
+        title:
+          "Accumulated memories can create long-term product value",
+
         bullets: [
           "Stronger emotional attachment to the service",
           "Higher engagement and return frequency",
           "Deeper personalisation",
           "Long-term value through accumulated memories",
         ],
+
         quote:
           "The value of a music collection is not only in what users listened to, but in the moments those songs help them remember.",
       },

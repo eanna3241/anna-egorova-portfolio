@@ -1,12 +1,39 @@
-export const projectCategories = ["mobile", "web", "presentation", "graphic", "concept"] as const;
+export const projectCategories = [
+  "mobile",
+  "web",
+  "presentation",
+  "graphic",
+  "concept",
+] as const;
 
-export type ProjectCategory = (typeof projectCategories)[number];
+export type ProjectCategory =
+  (typeof projectCategories)[number];
 
 export type CaseSection = {
   title: string;
+  eyebrow?: string;
   paragraphs?: string[];
   bullets?: string[];
   quote?: string;
+  images?: string[];
+};
+
+export type ProjectMeta = {
+  role?: string;
+  status?: string;
+  tools?: string[];
+};
+
+export type ProjectOverview = {
+  problem?: string;
+  solution?: string;
+  result?: string;
+};
+
+export type ProjectImpact = {
+  value: string;
+  label: string;
+  description?: string;
 };
 
 export type Project = {
@@ -20,5 +47,11 @@ export type Project = {
   cover: string;
   tags: string[];
   role: string;
+
+  meta?: ProjectMeta;
+  overview?: ProjectOverview;
+  impact?: ProjectImpact[];
+  learning?: string;
+
   sections: CaseSection[];
 };

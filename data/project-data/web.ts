@@ -30,8 +30,11 @@ export const webProjects: Project[] = [
       "VK",
     ],
 
-    role:
-      "Web and Communication Designer — page structure, visual concept, UI design and event communication.",
+    role: "Web Designer",
+
+    meta: {
+      role: "Web Designer",
+    },
 
     sections: [],
   },

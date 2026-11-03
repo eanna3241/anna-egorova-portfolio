@@ -10,7 +10,7 @@ export const conceptProjects: Project[] = [
       "Nova — turning music into a journey",
 
     description:
-      "A product concept connecting music and maps. The service recognises the context of a listening moment and creates a walking route that matches the user’s mood.",
+      "Nova is a product concept connecting music and maps.",
 
     badge:
       "/assets/images/projects/novamusic/hero-novamusic.png",
@@ -30,10 +30,21 @@ export const conceptProjects: Project[] = [
       "Maps",
     ],
 
-    role:
-      "Product Designer — concept, user scenario and UI design.",
+    role: "Product Designer",
 
-    sections: [],
+    meta: {
+      role: "Product Designer",
+      status: "Concept",
+    },
+
+    sections: [
+      {
+        title: "Concept",
+        paragraphs: [
+          "The service recognises the context of a listening moment and creates a walking route that matches the user’s mood.",
+        ],
+      },
+    ],
   },
 
   {
@@ -45,7 +56,7 @@ export const conceptProjects: Project[] = [
       "Decades — a Bauhaus-inspired identity for a creative school",
 
     description:
-      "A visual identity and website redesign concept created as a design challenge for an Amsterdam-based creative school. The new direction combines Bauhaus principles with a bold, flexible and contemporary visual system.",
+      "A visual identity and website redesign concept created as a design challenge for an Amsterdam-based creative school.",
 
     badge:
       "/assets/images/projects/decades/slide-01.png",
@@ -65,9 +76,20 @@ export const conceptProjects: Project[] = [
       "Education",
     ],
 
-    role:
-      "Visual Designer — art direction, visual identity, typography and website concept.",
+    role: "Graphic Designer",
 
-    sections: [],
+    meta: {
+      role: "Graphic Designer",
+      status: "Design challenge",
+    },
+
+    sections: [
+      {
+        title: "Concept",
+        paragraphs: [
+          "The new direction combines Bauhaus principles with a bold, flexible and contemporary visual system.",
+        ],
+      },
+    ],
   },
 ];
