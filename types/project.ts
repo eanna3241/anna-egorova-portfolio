@@ -21,6 +21,8 @@ export type CaseSection = {
 export type ProjectMeta = {
   role?: string;
   status?: string;
+  year?: string;
+  type?: string | string[];
   tools?: string[];
 };
 
