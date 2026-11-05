@@ -23,6 +23,8 @@ export type ProjectMeta = {
   status?: string;
   year?: string;
   type?: string | string[];
+  scope?: string | string[];
+  team?: string | string[];
   tools?: string[];
 };
 
